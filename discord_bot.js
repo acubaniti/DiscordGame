@@ -1,5 +1,4 @@
 var fs = require('fs');
-const eco = require("discord-economy"); //https://www.npmjs.com/package/discord-economy
 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
@@ -22,8 +21,8 @@ console.log("Starting DiscordBot\nNode version: " + process.version + "\nDiscord
 try {
 	var AuthDetails = require("./auth.json");
 } catch (e){
-	console.log("Please create an auth.json like auth.json.example with a bot token or an email and password.\n"+e.stack); // send message for error - no token
-	process.exit();
+	console.log("Please create an auth.json like auth.json.example with a bot token or an email and password.\n"+e.stack); // send message for error - no token 
+	process.exit(); 
 }
 // Load custom permissions
 var dangerousCommands = ["uptime", "ping", "idle", "online", "clear", "addmeme", "alias", "idle", "online", "memes" ]; // set array if dangerous commands
@@ -142,14 +141,14 @@ commands = {	// all commands list below
     "idle": {
 		usage: "[status]",
         description: "Sets bot status to idle.",
-        process: function(bot,msg,suffix){
+        process: function(bot,msg,suffix){ 
 	    bot.user.setStatus("idle").then(console.log).catch(console.error);
 	}
     },
     "online": {
 		usage: "[status]",
         description: "Sets bot status to online.",
-        process: function(bot,msg,suffix){
+        process: function(bot,msg,suffix){ 
 	    bot.user.setStatus("online").then(console.log).catch(console.error);
 	}
     },
@@ -158,8 +157,8 @@ commands = {	// all commands list below
         description: "Bot sends message",
         process: function(bot,msg,suffix){ msg.delete().then(msg.channel.send(suffix));}
     },
-
-
+ 
+ 
 };
 
 if(AuthDetails.hasOwnProperty("client_id")){
@@ -171,7 +170,7 @@ if(AuthDetails.hasOwnProperty("client_id")){
 	}
 }
 
-
+ 
 
 var bot = new Discord.Client();
 
@@ -202,7 +201,7 @@ function checkMessageForCommand(msg, isEdit) {
 			try {
 				cmdTxt = msg.content.split(" ")[1];
 				suffix = msg.content.substring(bot.user.mention().length+cmdTxt.length+Config.commandPrefix.length+1);
-			} catch(e){ //no command
+			} catch(e){ //no command 
 				return false;
 			}
         }
@@ -349,21 +348,21 @@ function checkMessageForCommand(msg, isEdit) {
 
         } else if(Math.floor(Math.random() * 15) == 1){
         				function randomDrop() {
-				    var dropRange = [
+				    var dropRange = [ 
 				        "🥇",
 				        "🥈",
 				        "🥉",
 				        "🦽",
 
-				    ];
+				    ]; 
 				    var r = Math.floor(Math.random() * dropRange.length);
 				    msg.react(dropRange[r])
 				    .catch(() => console.error('One of the emojis failed to react.'));
-}
-				randomDrop();
+}  
+				randomDrop(); 
         }
 
-        else {
+        else { 
 				}
 
 		return false;
@@ -384,23 +383,23 @@ bot.on("messageUpdate", (oldMessage, newMessage) => {
 
 //  On user join
  bot.on('guildMemberAdd', member => {
-    member.guild.channels.get('710765073915838506').send('**' + member.user.username + '** a intrat pe server.');
+    member.guild.channels.get('710765073915838506').send('**' + member.user.username + '** a intrat pe server.'); 
     member.send(" :crown: Welcome to Chill Place :crown:\n\n    1. No Child Pornography\n    2. No Illegal shit\n    3. No exaggerated bullying/being an asshole\n\n:underage: This is an adult server, no kids allowed :underage:\n                             Have fun!")
     .catch(() => console.error('Was unable to send welcome message to joining member.'));
 
 
-});
+});	
 
 // On user leave
 bot.on('guildMemberRemove', member => {
     member.guild.channels.get('710765073915838506').send('**' + member.user.username + '**, a fost prins de jandarmi noaptea pe strada.');
+    
 
-
-    //
+    //	
 });
 
 // //Log user status changes
-// bot.on("presence", function(user,status,gameId) {
+// bot.on("presence", function(user,status,gameId) {	
 // 	//if(status === "online"){
 // 	//console.log("presence update");
 // 	console.log(user+" went "+status);
@@ -409,7 +408,7 @@ bot.on('guildMemberRemove', member => {
 // 	if(status != 'offline'){
 // 		if(messagebox.hasOwnProperty(user.id)){
 // 			console.log("Found message for " + user.id);
-// 			var message = messagebox[user.id];
+// 			var message = messagebox[user.id];	
 // 			var channel = bot.channels.get("id",message.channel);
 // 			delete messagebox[user.id];
 // 			updateMessagebox();

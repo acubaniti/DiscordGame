@@ -1,0 +1,13 @@
+{
+  "global": {
+    "uptime": false,
+    "ping": false,
+    "idle": false,
+    "online": false,
+    "clear": false,
+    "addmeme": false,
+    "alias": false,
+    "memes": false
+  },
+  "users": {}
+}
